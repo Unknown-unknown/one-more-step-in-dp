@@ -25,7 +25,7 @@ func Aggregate(requestInfos []*RequestInfo, durationInMillis int64) *RequestStat
 
 	for _, info := range requestInfos {
 		count++
-		resp := info.responseTime
+		resp := info.ResponseTime
 		if max < resp {
 			max = resp
 		}
@@ -39,13 +39,13 @@ func Aggregate(requestInfos []*RequestInfo, durationInMillis int64) *RequestStat
 	}
 	tps := count / durationInMillis * 1000
 	sort.Slice(requestInfos, func(i, j int) bool {
-		return requestInfos[i].responseTime < requestInfos[j].responseTime
+		return requestInfos[i].ResponseTime < requestInfos[j].ResponseTime
 	})
 	idx999 := int64(float64(count) * 0.999)
 	idx99 := int64(float64(count) * 0.99)
 	if count != 0 {
-		p999 = requestInfos[idx999].responseTime
-		p99 = requestInfos[idx99].responseTime
+		p999 = requestInfos[idx999].ResponseTime
+		p99 = requestInfos[idx99].ResponseTime
 	}
 	return &RequestStat{
 		MaxResponseTime:  max,

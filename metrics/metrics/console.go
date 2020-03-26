@@ -19,7 +19,7 @@ func NewConsoleReporter(s Storager) *ConsoleReporter {
 	}
 }
 
-func (r *ConsoleReporter) Start(durationInSeconds int64, spec string) {
+func (r *ConsoleReporter) Start(durationInSeconds int64) {
 	t := time.NewTicker(time.Second * 3)
 	for {
 		select {

@@ -12,7 +12,7 @@ type Collector struct {
 	storage Storager
 }
 
-func New(storage Storager) *Collector {
+func NewCollector(storage Storager) *Collector {
 	return &Collector{
 		storage: storage,
 	}
@@ -26,11 +26,11 @@ func (c *Collector) RecordRequest(requestInfo *RequestInfo) error {
 }
 
 type RequestInfo struct {
-	apiName      string
-	responseTime float64
-	timestamp    int64
+	ApiName      string
+	ResponseTime float64
+	Timestamp    int64
 }
 
 func (r *RequestInfo) GetAPIName() string {
-	return r.apiName
+	return r.ApiName
 }
